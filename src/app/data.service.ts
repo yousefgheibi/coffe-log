@@ -11,8 +11,8 @@ export class DataService {
 
   getList(callback: Function) {
     const list = [
-      new Coffee("Double Espresso", "Cafe Tortoni", new PlaceLocation("Av. de Mayo 600", "Buenos Aires")),
-      new Coffee("Honey Americano", "Starcoffee", new PlaceLocation("Gran Via 34", "Madrid"))
+      new Coffee("1","Double Espresso", "Cafe Tortoni", new PlaceLocation("Av. de Mayo 600", "Buenos Aires")),
+      new Coffee("2","Honey Americano", "Starcoffee", new PlaceLocation("Gran Via 34", "Madrid"))
     ];
     callback(list);
   }
