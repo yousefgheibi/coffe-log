@@ -9,7 +9,7 @@ export class Coffee {
   tastingRating: TastingRating | null;
 
   constructor(
-    public _id: string | null = null,
+    public id: string | null = null,
     public name: string = '',
     public place: string = '',
     public location: PlaceLocation | null = null

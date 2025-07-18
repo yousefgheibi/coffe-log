@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
+import { GeolocationService } from '../geolocation.service';
 
 @Component({
   selector: 'app-list',
@@ -16,7 +17,7 @@ import { Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
   list: Coffee[] = [];
-  constructor(private data: DataService, private router: Router) {}
+  constructor(private data: DataService, private router: Router, private geolocation: GeolocationService) {}
 
   ngOnInit(): void {
     this.data.getList((list: Coffee[]) => {
@@ -25,6 +26,26 @@ export class ListComponent implements OnInit {
   }
 
   goDetails(coffee: Coffee) {
-    this.router.navigate(['/coffee', coffee._id]);
+    this.router.navigate(['/coffee', coffee.id]);
   }
+
+   goMap(coffee: Coffee) {
+    const mapURL = this.geolocation.getMapLink(coffee.location!);
+    window.open(mapURL, "_blank");
+   }
+
+   share(coffee: Coffee) {
+    const text = `I had this coffee at ${coffee.place} and for me it's ${coffee.rating} stars.`
+    const info = {
+      title: coffee.name,
+      text: text,
+      url: window.location.href
+    }
+
+    if ('share' in navigator && navigator.canShare(info)) {
+      navigator.share(info)
+    } else {
+      // TODO: show a message
+    }
+   }
 }

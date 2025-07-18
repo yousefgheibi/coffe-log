@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Coffee } from '../../logic/Coffee';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,6 +12,7 @@ import { GeolocationService } from '../geolocation.service';
 import { DataService } from '../data.service';
 import { TastingRating } from '../../logic/TastingRating';
 import { MatIconModule } from '@angular/material/icon';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-coffee',
@@ -23,13 +24,32 @@ import { MatIconModule } from '@angular/material/icon';
     DataService
   ]
 })
-export class CoffeeComponent {
+export class CoffeeComponent implements OnInit{
   
   coffee = new Coffee();
   types = ["Espresso", "Ristretto", "Americano", "Cappuccino", "Frappe"]
   tastingEnabled = false;
+  formType : "editing" | "inserting" = "inserting";
 
-  constructor(private geolocation: GeolocationService) {}
+  constructor(private geolocation: GeolocationService,
+    private  data: DataService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      if (params["id"]) {
+        this.data.get(params["id"], (response: any) => {
+          this.coffee = response; // TODO: convert the object to a Coffee instance
+          this.formType = "editing";
+          if (this.coffee.tastingRating) {
+            this.tastingEnabled = true
+          }
+        })
+      }
+    })
+  }
 
   tastingRatingChanged(checked: boolean) {
     if (checked) {
@@ -49,10 +69,23 @@ export class CoffeeComponent {
   }
 
   cancel() {
-
+    this.router.navigate(["/"])
   }
 
   save() {
+    let resultFunction = (result: boolean) => {
+      if (result) {
+        this.router.navigate(["/"]);
+      } else {
+        // TODO: render a nice error message
+      }
+    }
 
+    if (this.formType=="inserting") {
+      let { id, ...insertedCoffee} = this.coffee;
+      this.data.save(insertedCoffee, resultFunction);
+    } else {
+      this.data.save(this.coffee, resultFunction);
+    }
   }
 }

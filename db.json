@@ -1,0 +1,85 @@
+{
+  "coffees": [
+    {
+      "id": "a101",
+      "name": "Morning Thunder",
+      "place": "Cafe Nova",
+      "location": {
+        "address": "456 Bean St",
+        "city": "Brewtown",
+        "latitude": 37.7749,
+        "longitude": -122.4194
+      },
+      "type": "Espresso",
+      "rating": 4.5,
+      "notes": "Strong and bold with a nutty aroma",
+      "tastingRating": {
+        "aroma": 5,
+        "body": 4,
+        "flavor": 5,
+        "intensity": 5,
+        "sweetness": 3,
+        "aftertaste": 4
+      }
+    },
+    {
+      "id": "b202",
+      "name": "Velvet Brew",
+      "place": "Roast Republic",
+      "location": {
+        "address": "789 Roast Ave",
+        "city": "Grindville",
+        "latitude": 40.7128,
+        "longitude": -74.0060
+      },
+      "type": "Latte",
+      "rating": 3.8,
+      "notes": "Creamy with hints of caramel and vanilla",
+      "tastingRating": {
+        "aroma": 4,
+        "body": 3,
+        "flavor": 4,
+        "intensity": 2,
+        "sweetness": 5,
+        "aftertaste": 3
+      }
+    },
+    {
+      "id": "c303",
+      "name": "Dark Eclipse",
+      "place": "Bitter Beans",
+      "location": {
+        "address": "321 Mocha Blvd",
+        "city": "Espressoton",
+        "latitude": 51.5074,
+        "longitude": -0.1278
+      },
+      "type": "Americano",
+      "rating": 4.2,
+      "notes": "Dark roast with earthy undertones",
+      "tastingRating": {
+        "aroma": 4,
+        "body": 5,
+        "flavor": 4,
+        "intensity": 4,
+        "sweetness": 2,
+        "aftertaste": 4
+      }
+    },
+    {
+      "id": "d404",
+      "name": "Sunrise Shot",
+      "place": "Wake & Brew",
+      "location": {
+        "address": "159 Coffee Crescent",
+        "city": "Latteville",
+        "latitude": null,
+        "longitude": null
+      },
+      "type": "Ristretto",
+      "rating": 0,
+      "notes": "Unrated sample",
+      "tastingRating": null
+    }
+  ]
+}
