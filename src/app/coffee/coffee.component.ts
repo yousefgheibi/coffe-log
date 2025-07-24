@@ -13,6 +13,7 @@ import { DataService } from '../data.service';
 import { TastingRating } from '../../logic/TastingRating';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UiService } from '../ui.service';
 
 @Component({
   selector: 'app-coffee',
@@ -34,10 +35,13 @@ export class CoffeeComponent implements OnInit{
   constructor(private geolocation: GeolocationService,
     private  data: DataService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private ui: UiService
   ) {}
 
   ngOnInit(): void {
+    this.ui.setTitle("New");
+    this.ui.setThemeColor('brown');
     this.route.params.subscribe(params => {
       if (params["id"]) {
         this.data.get(params["id"], (response: any) => {

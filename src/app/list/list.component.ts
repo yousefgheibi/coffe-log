@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterModule } from '@angular/router';
 import { GeolocationService } from '../geolocation.service';
+import { UiService } from '../ui.service';
 
 @Component({
   selector: 'app-list',
@@ -17,12 +18,16 @@ import { GeolocationService } from '../geolocation.service';
 })
 export class ListComponent implements OnInit {
   list: Coffee[] = [];
-  constructor(private data: DataService, private router: Router, private geolocation: GeolocationService) {}
+  constructor(private data: DataService, private router: Router, private geolocation: GeolocationService,
+     private ui: UiService
+  ) {}
 
   ngOnInit(): void {
     this.data.getList((list: Coffee[]) => {
       this.list = list;
     });
+    this.ui.setTitle("Coffees");
+    this.ui.setThemeColor('orange');
   }
 
   goDetails(coffee: Coffee) {
