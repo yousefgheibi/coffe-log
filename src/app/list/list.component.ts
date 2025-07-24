@@ -5,13 +5,13 @@ import { JsonPipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { GeolocationService } from '../geolocation.service';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [JsonPipe, MatCardModule, MatButtonModule, MatIconModule],
+  imports: [JsonPipe, MatCardModule, MatButtonModule, MatIconModule,RouterModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
 })

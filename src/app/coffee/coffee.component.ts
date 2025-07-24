@@ -80,7 +80,7 @@ export class CoffeeComponent implements OnInit{
         // TODO: render a nice error message
       }
     }
-
+ 
     if (this.formType=="inserting") {
       let { id, ...insertedCoffee} = this.coffee;
       this.data.save(insertedCoffee, resultFunction);
