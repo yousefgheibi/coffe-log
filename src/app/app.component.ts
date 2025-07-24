@@ -23,7 +23,20 @@ export class AppComponent implements OnInit {
   title = 'coffee Log';
 
   constructor(private snackBar: MatSnackBar) {}
+
+  updateNetworkStatusUI() {
+    if (navigator.onLine) {
+      (document.querySelector('body') as any).style = '';
+    } else {
+      (document.querySelector('body') as any).style = 'filter: grayscale(1)';
+    }
+  }
   ngOnInit(): void {
+
+    this.updateNetworkStatusUI();
+
+    window.addEventListener("online", this.updateNetworkStatusUI),
+    window.addEventListener("offline", this.updateNetworkStatusUI)
     if (window.matchMedia('(display-mode: browser').matches) {
       if ('standalone' in navigator) {
         // safari
