@@ -6,6 +6,14 @@
   "display": "minimal-ui",
   "scope": "./",
   "start_url": "./",
+  "description":"This is the best app for keep track of the coffees that you consume and if you like them or not",
+  "screenshots":[
+    {
+      "src": "assets/screenshot.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
   "shortcuts": [
     {
       "name": "New Coffee Review",
